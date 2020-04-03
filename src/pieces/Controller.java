@@ -10,13 +10,12 @@ public class Controller {
 
 	
 	public static void main(String[] args) {
-		Chessboard myChessboard = new Chessboard();
-
-
-		while (myChessboard.getGameRunning()) {
-
-			myChessboard.printBoard();
-			myChessboard.move();
+		Chessboard chessboard = new Chessboard();
+		chessboard.printBoard();
+		Move currMove = new Move(chessboard);
+		while (Chessboard.gameRunning) {
+			chessboard.printBoard();
+			currMove.move();
 
 		}
 	}
