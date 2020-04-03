@@ -18,23 +18,22 @@ public class Bishop extends AbstractPiece {
 		}
 	}
 
-	private static Boolean diagonalPath(int srcRow, int srcCol,
-			int destRow, int destCol) {
+	private static Boolean diagonalPath(int sourceRow, int sourceColumn, int destinationRow,
+			int destinationColumn) {
 		// returns true if the path is diagonal
 		// arguments are initial and final coordinates of move in chessboard
 		// array
 		// good for checking if a move is valid
-		return ((Math.abs(srcRow - destRow) == Math.abs(srcCol
-				- destCol)));
+		return ((Math.abs(sourceRow - destinationRow) == Math.abs(sourceColumn - destinationColumn)));
 	}
 
 	@Override
-	public boolean isMoveValid(int srcRow, int srcCol, int destRow, int destCol) {
-		return diagonalPath(srcRow, srcCol, destRow, destCol);
+	public boolean isMoveValid(int sourceRow, int sourceColumn, int destinationRow, int destinationColumn) {
+		return diagonalPath(sourceRow, sourceColumn, destinationRow, destinationColumn);
 	}
 
 	@Override
-	public int relativeValue() {
+	public int relativeChessPieceValue() {
 		// TODO Auto-generated method stub
 		return 3;
 	}

@@ -28,13 +28,13 @@ public abstract class AbstractPiece {
 	 * Checks whether a given move is valid. Returns true if valid, false
 	 * otherwise
 	 */
-	public abstract boolean isMoveValid(int srcRow, int srcCol, int destRow,
-			int destCol);
+	public abstract boolean isMoveValid(int sourceRow, int sourceColumn, int destinationRow,
+			int destinationColumn);
 
 	/**
 	 * Returns relative chess piece value of this chessman.
 	 * @return
 	 */
-	public abstract int relativeValue();
+	public abstract int relativeChessPieceValue();
 
 }

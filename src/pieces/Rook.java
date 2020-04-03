@@ -20,23 +20,23 @@ public class Rook extends AbstractPiece {
 		}		
 	}
 	
-	private static Boolean straightPath(int srcRow, int srcCol,
-			int destRow, int destCol) {
+	private static Boolean straightPath(int sourceRow, int sourceColumn,
+			int destinationRow, int destinationColumn) {
 		// returns true if the path is straight
 		// arguments are initial and final coordinates of move in chessboard
 		// array
 		// good for checking if a move is valid
-		return !((srcRow != destRow) && (srcCol != destCol));
+		return !((sourceRow != destinationRow) && (sourceColumn != destinationColumn));
 	}
 
 	@Override
-	public boolean isMoveValid(int srcRow, int srcCol, int destRow, int destCol) {
+	public boolean isMoveValid(int sourceRow, int sourceColumn, int destinationRow, int destinationColumn) {
 		// TODO Auto-generated method stub
-		return straightPath(srcRow, srcCol, destRow, destCol);
+		return straightPath(sourceRow, sourceColumn, destinationRow, destinationColumn);
 	}
 
 	@Override
-	public int relativeValue() {
+	public int relativeChessPieceValue() {
 		// TODO Auto-generated method stub
 		return 5;
 	}

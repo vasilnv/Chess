@@ -17,9 +17,7 @@ public class Pawn extends AbstractPiece {
 		}
 		if (!(this.isWhite)) {
 			System.out.print("\u265F");
-
 		}
-
 	}
 
 	@Override
@@ -47,7 +45,7 @@ public class Pawn extends AbstractPiece {
 	}
 
 	@Override
-	public int relativeValue() {
+	public int relativeChessPieceValue() {
 		// TODO Auto-generated method stub
 		return 1;
 	}
