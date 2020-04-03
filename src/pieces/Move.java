@@ -22,16 +22,31 @@ public class Move {
 		assignWhoStartsFirst();
 	}
 
-	public void showScore() {
-		System.out
-		.println("___________________________________________________\n"
-				+ "Score: White "
-				+ whiteScore
-				+ " | "
-				+ blackScore
-				+ " Black");
+	public void move() {
+		if (invalidMove) {
+			System.err.println("Move is invalid. Please try again:");
+			invalidMove = false;
+		} else {
+			showWhichPlayerTurnIs();
+		}
+		moveCommand = user_input.nextLine();
+		if (moveCommand.equalsIgnoreCase("exit")) {
+			exitGame();
+			return;
+		}
+		setPieceSourceAndDestination();
+		if (canCurrentPlayerMakeThisMove()) {
+			updateScore();
+			showScore();
+			chessboard.setPiece(destinationRow, destinationColumn, chessboard.getPiece(sourceRow, sourceColumn));
+			chessboard.setPiece(sourceRow, sourceColumn, null);
+			whitesTurnToMove = !whitesTurnToMove;
+		} else {
+			invalidMove = true;
+			move();
+		}
 	}
-	
+
 	public void showWhichPlayerTurnIs() {
 		if (whitesTurnToMove) {
 			System.out
@@ -61,31 +76,6 @@ public class Move {
 		sourceColumn = components[0].charAt(0) - 'a';
 		destinationRow = 7 - (components[2].charAt(1) - '1');
 		destinationColumn = components[2].charAt(0) - 'a';
-	}
-	
-	public void move() {
-		if (invalidMove) {
-			System.err.println("Move is invalid. Please try again:");
-			invalidMove = false;
-		} else {
-			showWhichPlayerTurnIs();
-		}
-		moveCommand = user_input.nextLine();
-		if (moveCommand.equalsIgnoreCase("exit")) {
-			exitGame();
-			return;
-		}
-		setPieceSourceAndDestination();
-		if (canCurrentPlayerMakeThisMove()) {
-			updateScore();
-			showScore();
-			chessboard.setPiece(destinationRow, destinationColumn, chessboard.getPiece(sourceRow, sourceColumn));
-			chessboard.setPiece(sourceRow, sourceColumn, null);
-			whitesTurnToMove = !whitesTurnToMove;
-		} else {
-			invalidMove = true;
-			move();
-		}
 	}
 
 	private boolean canCurrentPlayerMakeThisMove() {
@@ -164,5 +154,14 @@ public class Move {
 		}
 	}
 
+	public void showScore() {
+		System.out
+		.println("___________________________________________________\n"
+				+ "Score: White "
+				+ whiteScore
+				+ " | "
+				+ blackScore
+				+ " Black");
+	}
 
 }
