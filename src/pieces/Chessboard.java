@@ -25,16 +25,8 @@ public class Chessboard {
 	private static int sourceRow, sourceColumn, destinationRow, destinationColumn;
 	private static int whiteScore = 0, blackScore = 0;
 	private static Boolean whitesTurnToMove;
-	// Set to true if move is invalid. Asks for user input again in move()
-	// method.
 	private static Boolean invalidMove = false;
-	// Holds string with the user input for move instructions
-	String move;
-
-	/**
-	 * Constructs a Chessboard object and populates it with pieces Starts a
-	 * chess game running.
-	 */
+	String moveCommand;
 
 	public Chessboard() {
 		initialiseBoard(chessboard);
@@ -199,16 +191,16 @@ public class Chessboard {
 							+ "___________________________________________________\n");
 		}
 
-		move = user_input.nextLine();
+		moveCommand = user_input.nextLine();
 
-		if (move.equalsIgnoreCase("exit")) {
+		if (moveCommand.equalsIgnoreCase("exit")) {
 			gameRunning = false;
 			System.out.println("Thanks for playing.");
 			return;
 		}
 
 		// convert to lower case
-		String lowerCase = move.toLowerCase();
+		String lowerCase = moveCommand.toLowerCase();
 		// parse move string into components
 		String[] components = lowerCase.split(" ");
 
@@ -238,43 +230,23 @@ public class Chessboard {
 		}
 	}
 
-	/**
-	 * Checks if a move is valid with 2 steps. Step 1: some general rule checks
-	 * that any piece should obey. 
-	 * Step 2: The specific isMoveValid() method from
-	 * a piece's class that checks rules specific for that piece, e.g that a
-	 * rook moves in straight lines.
-	 * 
-	 * @return True if valid, false if invalid.
-	 */
 	private boolean canCurrentPlayerMakeThisMove() {
-		// invalid if the move origin or destination is outside the board
 		isMoveInBoard();
-
-		// Invalid if origin is null
 		isSourcePositionNull();
-		
-		// Invalid if player moves when it's not their turn
 		isCurrentPlayerTurn();
 
-		// return false if specific piece rules are not obeyed
 		if (!chessboard[sourceRow][sourceColumn].isMoveValid(sourceRow, sourceColumn, destinationRow,
 				destinationColumn)) {
 			System.err.println("This piece doesn't move like that");
 			return false;
 		}
 
-		// this statement stops the statement for checking if white lands on
-		// white from performing isWhite() on a null space
 		if (chessboard[destinationRow][destinationColumn] == null) {
 			return true;
 		}
 
-		// invalid if the white lands on white
 		checkIfWhiteLandsOnWhite();
-		// invalid if the black lands on black
 		checkIfBlackLandsOnBlack();
-
 		return true;
 	}
 
@@ -323,10 +295,6 @@ public class Chessboard {
 		return true;
 	}
 
-	/**
-	 * A private method called to update the score of whoever's turn it is after
-	 * they take an opposing piece
-	 */
 	private void updateScore() {
 		if (chessboard[destinationRow][destinationColumn] == null) {
 			return;
