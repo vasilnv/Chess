@@ -2,7 +2,7 @@ package pieces;
 
 public abstract class AbstractPiece {
 
-	boolean isWhite;
+	protected boolean isWhite;
 
 	/**
 	 * If piece is white set true, false otherwise

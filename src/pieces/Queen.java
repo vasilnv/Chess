@@ -38,10 +38,10 @@ public class Queen extends AbstractPiece {
 	}
 
 	@Override
-	public boolean isMoveValid(int sourceRow, int sourceColumn, int destinationRow, int destinationCol) {
+	public boolean isMoveValid(int sourceRow, int sourceColumn, int destinationRow, int destinationColumn) {
 		// TODO Auto-generated method stub
-		return (diagonalPath(sourceRow, sourceColumn, destinationRow, destinationCol))
-				|| straightPath(sourceRow, sourceColumn, destinationRow, destinationCol);
+		return (diagonalPath(sourceRow, sourceColumn, destinationRow, destinationColumn))
+				|| straightPath(sourceRow, sourceColumn, destinationRow, destinationColumn);
 	}
 
 	@Override

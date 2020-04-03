@@ -36,7 +36,7 @@ public class Knight extends pieces.AbstractPiece {
 
 	@Override
 	public int relativeChessPieceValue() {
-		return 5;
+		return 3;
 	}
 
 }

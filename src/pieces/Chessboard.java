@@ -58,7 +58,6 @@ public class Chessboard {
 	 * 
 	 * @param chessboard
 	 */
-	
 	private static void initialiseBoard(AbstractPiece[][] chessboard) {
 		// a chessboard with 8x8 matrix of pieces
 		// rows [0] and [1] are black
@@ -129,11 +128,12 @@ public class Chessboard {
 				}
 			}
 		}
-
+	}
+	
+	public void assignWhoStartsFirst() {
 		// Randomly assign who starts first (black or white)
 		Random rand = new Random();
 		whitesTurnToMove = rand.nextBoolean();
-
 	}
 
 	/**
@@ -162,85 +162,6 @@ public class Chessboard {
 		}
 	}
 
-	/**
-	 * Checks if a move is valid with 2 steps. Step 1: some general rule checks
-	 * that any piece should obey. 
-	 * Step 2: The specific isMoveValid() method from
-	 * a piece's class that checks rules specific for that piece, e.g that a
-	 * rook moves in straight lines.
-	 * 
-	 * @return True if valid, false if invalid.
-	 */
-
-	private boolean moveValid() {
-
-		// invalid if the move origin or destination is outside the board
-
-		if (sourceRow < 0 || sourceRow > 7 || sourceColumn < 0 || sourceColumn > 7 || destinationRow < 0
-				|| destinationRow > 7 || destinationColumn < 0 || destinationColumn > 7) {
-			System.out.println("Move is outside the board");
-			return false;
-		}
-
-		// Invalid if origin is null
-		if (chessboard[sourceRow][sourceColumn] == null) {
-			System.err.println("Origin is empty");
-			return false;
-		}
-
-		// Invalid if player moves when it's not their turn
-		if ((chessboard[sourceRow][sourceColumn].isWhite && !whitesTurnToMove)
-				|| (!chessboard[sourceRow][sourceColumn].isWhite && whitesTurnToMove)) {
-			System.err.println("It's not your turn");
-			return false;
-		}
-
-		// return false if specific piece rules are not obeyed
-		if (!chessboard[sourceRow][sourceColumn].isMoveValid(sourceRow, sourceColumn, destinationRow,
-				destinationColumn)) {
-			System.err.println("This piece doesn't move like that");
-			return false;
-		}
-
-		// this statement stops the statement for checking if white lands on
-		// white from performing isWhite() on a null space
-		if (chessboard[destinationRow][destinationColumn] == null) {
-			return true;
-		}
-
-		// invalid if the white lands on white
-		if (chessboard[sourceRow][sourceColumn].isWhite
-				&& chessboard[destinationRow][destinationColumn].isWhite) {
-			System.err.println("White cannot land on white");
-			return false;
-		}
-
-		// invalid if the black lands on black
-		if (!chessboard[sourceRow][sourceColumn].isWhite
-				&& !chessboard[destinationRow][destinationColumn].isWhite) {
-			System.err.println("Black cannot land on black");
-			return false;
-		}
-
-		return true;
-
-	}
-
-	/**
-	 * A private method called to update the score of whoever's turn it is after
-	 * they take an opposing piece
-	 */
-	private void updateScore() {
-		if (chessboard[destinationRow][destinationColumn] == null) {
-			return;
-		}
-		if (whitesTurnToMove) {
-			whiteScore += chessboard[destinationRow][destinationColumn].relativeChessPieceValue();
-		} else {
-			blackScore += chessboard[destinationRow][destinationColumn].relativeChessPieceValue();
-
-		}
-	}
 
 	/**
 	 * Take user input for the instructions for move in the form
@@ -303,7 +224,7 @@ public class Chessboard {
 		destinationRow = 7 - (components[2].charAt(1) - '1');
 		destinationColumn = components[2].charAt(0) - 'a';
 
-		if (moveValid()) {
+		if (canCurrentPlayerMakeThisMove()) {
 			updateScore();
 			// put piece in destination
 			chessboard[destinationRow][destinationColumn] = chessboard[sourceRow][sourceColumn];
@@ -315,7 +236,106 @@ public class Chessboard {
 			move();
 
 		}
-
 	}
 
+	/**
+	 * Checks if a move is valid with 2 steps. Step 1: some general rule checks
+	 * that any piece should obey. 
+	 * Step 2: The specific isMoveValid() method from
+	 * a piece's class that checks rules specific for that piece, e.g that a
+	 * rook moves in straight lines.
+	 * 
+	 * @return True if valid, false if invalid.
+	 */
+	private boolean canCurrentPlayerMakeThisMove() {
+		// invalid if the move origin or destination is outside the board
+		isMoveInBoard();
+
+		// Invalid if origin is null
+		isSourcePositionNull();
+		
+		// Invalid if player moves when it's not their turn
+		isCurrentPlayerTurn();
+
+		// return false if specific piece rules are not obeyed
+		if (!chessboard[sourceRow][sourceColumn].isMoveValid(sourceRow, sourceColumn, destinationRow,
+				destinationColumn)) {
+			System.err.println("This piece doesn't move like that");
+			return false;
+		}
+
+		// this statement stops the statement for checking if white lands on
+		// white from performing isWhite() on a null space
+		if (chessboard[destinationRow][destinationColumn] == null) {
+			return true;
+		}
+
+		// invalid if the white lands on white
+		checkIfWhiteLandsOnWhite();
+		// invalid if the black lands on black
+		checkIfBlackLandsOnBlack();
+
+		return true;
+	}
+
+	public boolean isMoveInBoard() throws IllegalArgumentException{
+		boolean res = true;
+		if (sourceRow < 0 || sourceRow > 7 || sourceColumn < 0 || sourceColumn > 7 || destinationRow < 0
+				|| destinationRow > 7 || destinationColumn < 0 || destinationColumn > 7) {
+			System.out.println("Move is outside the board");
+			res = false;
+			throw new IllegalArgumentException();
+		}
+		return res;
+	}
+	
+	public boolean isSourcePositionNull() {
+		if (chessboard[sourceRow][sourceColumn] == null) {
+			System.err.println("Origin is empty");
+			throw new NullPointerException();
+		}
+		return true;
+	}
+	
+	public boolean isCurrentPlayerTurn() {
+		if ((chessboard[sourceRow][sourceColumn].isWhite() && !whitesTurnToMove)
+				|| (!chessboard[sourceRow][sourceColumn].isWhite() && whitesTurnToMove)) {
+			throw new IllegalArgumentException();
+		}
+		return true;
+	}
+
+	public boolean checkIfWhiteLandsOnWhite() {
+		if (chessboard[sourceRow][sourceColumn].isWhite()
+				&& chessboard[destinationRow][destinationColumn].isWhite()) {
+			System.err.println("White cannot land on white");
+			throw new IllegalArgumentException("White cannot land on white");
+		}
+		return true;
+	}
+
+	public boolean checkIfBlackLandsOnBlack() {
+		if (!chessboard[sourceRow][sourceColumn].isWhite()
+				&& !chessboard[destinationRow][destinationColumn].isWhite()) {
+			System.err.println("Black cannot land on black");
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * A private method called to update the score of whoever's turn it is after
+	 * they take an opposing piece
+	 */
+	private void updateScore() {
+		if (chessboard[destinationRow][destinationColumn] == null) {
+			return;
+		}
+		if (whitesTurnToMove) {
+			whiteScore += chessboard[destinationRow][destinationColumn].relativeChessPieceValue();
+		} else {
+			blackScore += chessboard[destinationRow][destinationColumn].relativeChessPieceValue();
+
+		}
+	}
 }

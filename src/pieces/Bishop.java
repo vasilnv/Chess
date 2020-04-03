@@ -3,7 +3,6 @@ import pieces.AbstractPiece;
 
 
 public class Bishop extends AbstractPiece {
-
 	public Bishop(boolean isWhite) {
 		super(isWhite);
 		// TODO Auto-generated constructor stub
@@ -37,5 +36,4 @@ public class Bishop extends AbstractPiece {
 		// TODO Auto-generated method stub
 		return 3;
 	}
-
 }
