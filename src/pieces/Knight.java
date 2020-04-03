@@ -19,10 +19,6 @@ public class Knight extends pieces.AbstractPiece {
 	
 	private static Boolean lShapedPath(int sourceRow, int sourceColumn,
 			int destinationRow, int destinationColumn) {
-		// returns true if the path is L-shaped
-		// arguments are initial and final coordinates of move in chessboard
-		// array
-		// good for checking if a move is valid
 		return ((Math.abs(sourceRow - destinationRow) == 2 && Math.abs(sourceColumn
 				- destinationColumn) == 1)
 				|| (Math.abs(sourceRow - destinationRow) == 1 && Math.abs(sourceColumn

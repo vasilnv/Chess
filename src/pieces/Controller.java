@@ -16,7 +16,6 @@ public class Controller {
 		while (Chessboard.gameRunning) {
 			chessboard.printBoard();
 			currMove.move();
-
 		}
 	}
 

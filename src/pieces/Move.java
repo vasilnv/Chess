@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Move {
-	private Boolean gameRunning;
 	private static int sourceRow, sourceColumn, destinationRow, destinationColumn;
 	private static int whiteScore = 0, blackScore = 0;
 	private static Boolean whitesTurnToMove;
@@ -14,7 +13,6 @@ public class Move {
 	private Chessboard chessboard;
 	
 	public static void assignWhoStartsFirst() {
-		// Randomly assign who starts first (black or white)
 		Random rand = new Random();
 		whitesTurnToMove = rand.nextBoolean();
 	}
@@ -40,14 +38,14 @@ public class Move {
 				.println("___________________________________________________\n"
 						+ "White's turn to move\n"
 						+ "Make move using this example:\n"
-						+ "a7 to a6\n"
+						+ "a2 to a3\n"
 						+ "___________________________________________________\n");
 		} else {
 			System.out
 				.println("___________________________________________________\n"
 						+ "Black's turn to move\n"
 						+ "Make move using this example:\n"
-						+ "a2 to a3\n"
+						+ "a7 to a6\n"
 						+ "___________________________________________________\n");
 		}
 	}

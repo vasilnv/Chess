@@ -6,16 +6,6 @@ import java.util.Scanner;
 
 import pieces.AbstractPiece;
 
-/**
- * An 8x8 Chessboard with a console display and string user input Has some basic
- * rules for checking if a move is valid or not Keeps track of the score of each
- * player by the value of pieces they take For best results construct a
- * Chessboard(), call move() and call printBoard().
- * 
- * @author SamiStart
- *
- */
-
 public class Chessboard {
 	public static Boolean gameRunning;
 	private AbstractPiece[][] chessboard = new AbstractPiece[numOfRowsAndCols][numOfRowsAndCols];// [row][column]
@@ -35,24 +25,7 @@ public class Chessboard {
 		return this.chessboard[sourceRow][sourceColumn];
 	}
 
-	/**
-	 * This gets attribute Boolean gameRunning if this is false then you should
-	 * stop calling move() and printBoard() and close the Chessboard()
-	 * 
-	 * @return a Boolean that is false if the user wants to exit called
-	 *         gameRunning
-	 */
-
-	/**
-	 * Populates the chessboard of AbstractPiece with the correct pieces and
-	 * randomly assigns whether white or black moves first
-	 * 
-	 * @param chessboard
-	 */
 	private static void initialiseBoard(AbstractPiece[][] chessboard) {
-		// a chessboard with 8x8 matrix of pieces
-		// rows [0] and [1] are black
-		// rows [6] and [7] are white
 		boolean isCurrentPieceWhite = false;
 		for (int row = 0; row < chessboard.length; row++) {
 			for (int column = 0; column < chessboard[row].length; column++) {
