@@ -44,6 +44,12 @@ public class Chessboard {
 		return this.gameRunning;
 	}
 
+	public static void assignWhoStartsFirst() {
+		// Randomly assign who starts first (black or white)
+		Random rand = new Random();
+		whitesTurnToMove = rand.nextBoolean();
+	}
+
 	/**
 	 * Populates the chessboard of AbstractPiece with the correct pieces and
 	 * randomly assigns whether white or black moves first
@@ -120,24 +126,10 @@ public class Chessboard {
 				}
 			}
 		}
+		assignWhoStartsFirst();
 	}
 	
-	public void assignWhoStartsFirst() {
-		// Randomly assign who starts first (black or white)
-		Random rand = new Random();
-		whitesTurnToMove = rand.nextBoolean();
-	}
-
-	/**
-	 * Prints out the unicode for each character to the console using the draw()
-	 * method from the relevant piece's class followed by tabs for tidiness.
-	 * Prints numbers 1-8 alongside rows and letters a-h alongside columns
-	 */
 	public void printBoard() {
-
-		// must take an 8x8 array of Chessmen (chess pieces),
-		// i.e. a chessboard, as argument
-
 		System.out.println("\ta\tb\tc\td\te\tf\tg\th");
 		for (int row = 0; row < chessboard.length; row++) {
 			System.out.print(8 - row + ".\t");
@@ -155,78 +147,67 @@ public class Chessboard {
 	}
 
 
-	/**
-	 * Take user input for the instructions for move in the form
-	 * "start coords to destination coords", e.g. "d2 to d3" and converts this
-	 * string to array coordinates for the Chessboard. Checks if the move is
-	 * valid using moveValid(). If valid moves piece to destination on
-	 * Chessboard and updates score with updateScore(). If invalid prints error
-	 * message and recursively calls itself.
-	 */
-	public void move() {
-
+	public void showScore() {
 		System.out
-				.println("___________________________________________________\n"
-						+ "Score: White "
-						+ whiteScore
-						+ " | "
-						+ blackScore
-						+ " Black");
-
-		if (invalidMove) {
-			System.err.println("Move is invalid. Please try again:");
-			// System.out.println("Move is invalid. Please try again:");
-			invalidMove = false;
-		}
-
-		else if (whitesTurnToMove) {
+		.println("___________________________________________________\n"
+				+ "Score: White "
+				+ whiteScore
+				+ " | "
+				+ blackScore
+				+ " Black");
+	}
+	
+	public void showWhichPlayerTurnIs() {
+		if (whitesTurnToMove) {
 			System.out
-					.println("___________________________________________________\n"
-							+ "White's turn to move\n"
-							+ "___________________________________________________\n");
+				.println("___________________________________________________\n"
+						+ "White's turn to move\n"
+						+ "Make move using this example:\n"
+						+ "a2 to a3\n"
+						+ "___________________________________________________\n");
 		} else {
 			System.out
-					.println("___________________________________________________\n"
-							+ "Black's turn to move\n"
-							+ "___________________________________________________\n");
+				.println("___________________________________________________\n"
+						+ "Black's turn to move\n"
+						+ "Make move using this example:\n"
+						+ "a7 to a6\n"
+						+ "___________________________________________________\n");
 		}
-
-		moveCommand = user_input.nextLine();
-
-		if (moveCommand.equalsIgnoreCase("exit")) {
-			gameRunning = false;
-			System.out.println("Thanks for playing.");
-			return;
-		}
-
-		// convert to lower case
-		String lowerCase = moveCommand.toLowerCase();
-		// parse move string into components
-		String[] components = lowerCase.split(" ");
-
-		// if you assume that move is "e1 to e5" then
-		// components[0].chartAt(0) = 'e'
-		// components [0].charAt (1) = '1'
-
-		// use chars in components to set the array coordinates of the
-		// move origin and move destination
- 
+	}
+	
+	public void exitGame() {
+		gameRunning = false;
+		System.out.println("Thanks for playing.");
+	}
+	
+	public void setPieceSourceAndDestination() {
+		String[] components = moveCommand.toLowerCase().split(" ");
 		sourceRow = 7 - (components[0].charAt(1) - '1');
 		sourceColumn = components[0].charAt(0) - 'a';
 		destinationRow = 7 - (components[2].charAt(1) - '1');
 		destinationColumn = components[2].charAt(0) - 'a';
-
+	}
+	
+	public void move() {
+		if (invalidMove) {
+			System.err.println("Move is invalid. Please try again:");
+			invalidMove = false;
+		} else {
+			showWhichPlayerTurnIs();
+		}
+		moveCommand = user_input.nextLine();
+		if (moveCommand.equalsIgnoreCase("exit")) {
+			exitGame();
+			return;
+		}
 		if (canCurrentPlayerMakeThisMove()) {
 			updateScore();
-			// put piece in destination
 			chessboard[destinationRow][destinationColumn] = chessboard[sourceRow][sourceColumn];
-			// empty the origin of the move
 			chessboard[sourceRow][sourceColumn] = null;
 			whitesTurnToMove = !whitesTurnToMove;
 		} else {
 			invalidMove = true;
 			move();
-
 		}
 	}
 
@@ -263,7 +244,6 @@ public class Chessboard {
 	
 	public boolean isSourcePositionNull() {
 		if (chessboard[sourceRow][sourceColumn] == null) {
-			System.err.println("Origin is empty");
 			throw new NullPointerException();
 		}
 		return true;
