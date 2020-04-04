@@ -22,7 +22,7 @@ public class Move {
 		assignWhoStartsFirst();
 	}
 
-	public void move() {
+	public void makeMove() {
 		if (invalidMove) {
 			System.err.println("Move is invalid. Please try again:");
 			invalidMove = false;
@@ -43,7 +43,7 @@ public class Move {
 			whitesTurnToMove = !whitesTurnToMove;
 		} else {
 			invalidMove = true;
-			move();
+			makeMove();
 		}
 	}
 

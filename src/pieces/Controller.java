@@ -15,7 +15,7 @@ public class Controller {
 		Move currMove = new Move(chessboard);
 		while (Chessboard.gameRunning) {
 			chessboard.printBoard();
-			currMove.move();
+			currMove.makeMove();
 		}
 	}
 
