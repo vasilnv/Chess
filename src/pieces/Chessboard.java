@@ -9,22 +9,13 @@ import pieces.AbstractPiece;
 public class Chessboard {
 	public static Boolean gameRunning;
 	private AbstractPiece[][] chessboard = new AbstractPiece[numOfRowsAndCols][numOfRowsAndCols];// [row][column]
-	private Scanner user_input = new Scanner(System.in);
 	private static final int numOfRowsAndCols = 8;
-	private String moveCommand;
 
 	public Chessboard() {
 		initialiseBoard(chessboard);
 		gameRunning = true;
 	}
 	
-	public void setPiece(int sourceRow, int sourceColumn, AbstractPiece piece) {
-		this.chessboard[sourceRow][sourceColumn] = piece;
-	}
-	public AbstractPiece getPiece(int sourceRow, int sourceColumn) {
-		return this.chessboard[sourceRow][sourceColumn];
-	}
-
 	private static void initialiseBoard(AbstractPiece[][] chessboard) {
 		boolean isCurrentPieceWhite = false;
 		for (int row = 0; row < chessboard.length; row++) {
@@ -113,4 +104,13 @@ public class Chessboard {
 		}
 	}
 
+	public void setPiece(int sourceRow, int sourceColumn, AbstractPiece piece) {
+		this.chessboard[sourceRow][sourceColumn] = piece;
+	}
+	public AbstractPiece getPiece(int sourceRow, int sourceColumn) {
+		return this.chessboard[sourceRow][sourceColumn];
+	}
+	
 }
+
+
