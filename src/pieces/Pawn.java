@@ -3,7 +3,9 @@ package pieces;
 import pieces.AbstractPiece;
 
 public class Pawn extends AbstractPiece {
-
+	private static final String WHITE_COLOR = "\u2654";
+	private static final String BLACK_COLOR = "\u265A";
+	
 	public Pawn(boolean isWhite) {
 		super(isWhite);
 	}
@@ -11,10 +13,10 @@ public class Pawn extends AbstractPiece {
 	@Override
 	public void draw() {
 		if (this.isWhite) {
-			System.out.print("\u2659");
+			System.out.print(WHITE_COLOR);
 		}
 		if (!(this.isWhite)) {
-			System.out.print("\u265F");
+			System.out.print(BLACK_COLOR);
 		}
 	}
 

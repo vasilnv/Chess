@@ -3,7 +3,9 @@ import pieces.AbstractPiece;
 
 
 public class King extends AbstractPiece {
-
+	private static final String WHITE_COLOR = "\u2654";
+	private static final String BLACK_COLOR = "\u265A";
+	
 	public King(boolean isWhite) {
 		super(isWhite);
 	}
@@ -11,9 +13,9 @@ public class King extends AbstractPiece {
 	@Override
 	public void draw() {
 		if (isWhite) {
-			System.out.print("\u2654");
+			System.out.print(WHITE_COLOR);
 		} else {
-			System.out.print("\u265A");
+			System.out.print(BLACK_COLOR);
 		}
 	}
 

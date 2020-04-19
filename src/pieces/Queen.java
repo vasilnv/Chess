@@ -3,7 +3,9 @@ package pieces;
 import pieces.AbstractPiece;
 
 public class Queen extends AbstractPiece {
-
+	private static final String WHITE_COLOR = "\u2654";
+	private static final String BLACK_COLOR = "\u265A";
+	
 	public Queen(boolean isWhite) {
 		super(isWhite);
 		
@@ -12,10 +14,10 @@ public class Queen extends AbstractPiece {
 	@Override
 	public void draw() {
 		if (isWhite){
-			System.out.print("\u2655");
+			System.out.print(WHITE_COLOR);
 		}
 		else{
-			System.out.print("\u265B");
+			System.out.print(BLACK_COLOR);
 		}
 	}
 

@@ -3,6 +3,9 @@ import pieces.AbstractPiece;
 
 
 public class Bishop extends AbstractPiece {
+	private static final String WHITE_COLOR = "\u2654";
+	private static final String BLACK_COLOR = "\u265A";
+	
 	public Bishop(boolean isWhite) {
 		super(isWhite);
 	}
@@ -10,9 +13,9 @@ public class Bishop extends AbstractPiece {
 	@Override
 	public void draw() {
 		if (isWhite) {
-			System.out.print("\u2657");
+			System.out.print(WHITE_COLOR);
 		} else {
-			System.out.print("\u265D");
+			System.out.print(BLACK_COLOR);
 		}
 	}
 

@@ -4,7 +4,9 @@ import pieces.AbstractPiece;
 
 
 public class Rook extends AbstractPiece {
-
+	private static final String WHITE_COLOR="\u2654";
+	private static final String BLACK_COLOR="\u265A";
+	
 	public Rook(boolean isWhite) {
 		super(isWhite);
 	}
@@ -12,10 +14,10 @@ public class Rook extends AbstractPiece {
 	@Override
 	public void draw() {
 		if (isWhite){
-			System.out.print("\u2656");
+			System.out.print(WHITE_COLOR);
 		}
 		else{
-			System.out.print("\u265C");
+			System.out.print(BLACK_COLOR);
 		}		
 	}
 	

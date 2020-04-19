@@ -8,8 +8,9 @@ import pieces.AbstractPiece;
 
 public class Chessboard {
 	public static Boolean gameRunning;
-	private AbstractPiece[][] chessboard = new AbstractPiece[numOfRowsAndCols][numOfRowsAndCols];// [row][column]
-	private static final int numOfRowsAndCols = 8;
+	private AbstractPiece[][] chessboard = new AbstractPiece[NUM_OF_ROWS][NUM_OF_COLUMNS];
+	private static final int NUM_OF_ROWS = 8;
+	private static final int NUM_OF_COLUMNS = 8;
 
 	public Chessboard() {
 		initialiseBoard(chessboard);
@@ -90,7 +91,7 @@ public class Chessboard {
 	public void printBoard() {
 		System.out.println("\ta\tb\tc\td\te\tf\tg\th");
 		for (int row = 0; row < chessboard.length; row++) {
-			System.out.print(8 - row + ".\t");
+			System.out.print(NUM_OF_ROWS - row + ".\t");
 			for (int column = 0; column < chessboard[row].length; column++) {
 				if (chessboard[row][column] != null) {
 					chessboard[row][column].draw();
