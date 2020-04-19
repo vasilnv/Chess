@@ -7,7 +7,7 @@ import java.util.Scanner;
 import pieces.AbstractPiece;
 
 public class Chessboard {
-	public static Boolean gameRunning;
+	private Boolean gameRunning;
 	private AbstractPiece[][] chessboard = new AbstractPiece[NUM_OF_ROWS][NUM_OF_COLUMNS];
 	private static final int NUM_OF_ROWS = 8;
 	private static final int NUM_OF_COLUMNS = 8;
@@ -110,6 +110,13 @@ public class Chessboard {
 	}
 	public AbstractPiece getPiece(int sourceRow, int sourceColumn) {
 		return this.chessboard[sourceRow][sourceColumn];
+	}
+	
+	public boolean isGameRunning() {
+		return gameRunning;
+	}
+	public void setGameRunning(boolean gameRunning) {
+		this.gameRunning = gameRunning;
 	}
 	
 }

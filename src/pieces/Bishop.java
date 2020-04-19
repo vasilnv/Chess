@@ -12,7 +12,7 @@ public class Bishop extends AbstractPiece {
 
 	@Override
 	public void draw() {
-		if (isWhite) {
+		if (isWhite()) {
 			System.out.print(WHITE_COLOR);
 		} else {
 			System.out.print(BLACK_COLOR);

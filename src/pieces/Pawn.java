@@ -12,17 +12,17 @@ public class Pawn extends AbstractPiece {
 
 	@Override
 	public void draw() {
-		if (this.isWhite) {
+		if (this.isWhite()) {
 			System.out.print(WHITE_COLOR);
 		}
-		if (!(this.isWhite)) {
+		if (!(this.isWhite())) {
 			System.out.print(BLACK_COLOR);
 		}
 	}
 
 	@Override
 	public boolean isMoveValid(int sourceRow, int sourceColumn, int destinationRow, int destinationColumn) {
-			if (this.isWhite) {
+			if (this.isWhite()) {
 				return (((sourceColumn == destinationColumn) && sourceRow == (destinationRow + 1))
 						|| ((sourceRow == 6) && (sourceColumn == destinationColumn) && (sourceRow == (destinationRow + 2)))
 						|| ((sourceRow == (destinationRow + 1))

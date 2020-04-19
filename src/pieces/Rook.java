@@ -13,7 +13,7 @@ public class Rook extends AbstractPiece {
 
 	@Override
 	public void draw() {
-		if (isWhite){
+		if (isWhite()){
 			System.out.print(WHITE_COLOR);
 		}
 		else{

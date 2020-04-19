@@ -2,7 +2,7 @@ package pieces;
 
 public abstract class AbstractPiece {
 
-	protected boolean isWhite;
+	private boolean isWhite;
 
 	public AbstractPiece(boolean isWhite) {
 		this.isWhite = isWhite;

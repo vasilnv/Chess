@@ -9,11 +9,11 @@ public class Queen extends AbstractPiece {
 	public Queen(boolean isWhite) {
 		super(isWhite);
 		
-		}
+	}
 
 	@Override
 	public void draw() {
-		if (isWhite){
+		if (isWhite()){
 			System.out.print(WHITE_COLOR);
 		}
 		else{
@@ -39,7 +39,6 @@ public class Queen extends AbstractPiece {
 
 	@Override
 	public int relativeChessPieceValue() {
-		// TODO Auto-generated method stub
 		return 9;
 	}
 

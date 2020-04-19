@@ -66,7 +66,7 @@ public class Move {
 	}
 	
 	public void exitGame() {
-		Chessboard.gameRunning = false;
+		chessboard.setGameRunning(false);
 		System.out.println("Thanks for playing.");
 	}
 	

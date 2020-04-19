@@ -13,7 +13,7 @@ public class Controller {
 		Chessboard chessboard = new Chessboard();
 		chessboard.printBoard();
 		Move currMove = new Move(chessboard);
-		while (Chessboard.gameRunning) {
+		while (chessboard.isGameRunning()) {
 			chessboard.printBoard();
 			currMove.makeMove();
 		}
