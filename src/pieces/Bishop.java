@@ -3,6 +3,7 @@ import pieces.AbstractPiece;
 
 
 public class Bishop extends AbstractPiece {
+	private static final int BISHOP_VALUE = 3;
 	private static final String WHITE_COLOR = "\u2654";
 	private static final String BLACK_COLOR = "\u265A";
 	
@@ -30,6 +31,6 @@ public class Bishop extends AbstractPiece {
 
 	@Override
 	public int relativeChessPieceValue() {
-		return 3;
+		return BISHOP_VALUE;
 	}
 }

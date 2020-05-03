@@ -3,6 +3,7 @@ package pieces;
 import pieces.AbstractPiece;
 
 public class Rook extends AbstractPiece {
+	private static final int ROOK_VALUE = 5;
 	private static final String WHITE_COLOR = "\u2654";
 	private static final String BLACK_COLOR = "\u265A";
 
@@ -30,7 +31,7 @@ public class Rook extends AbstractPiece {
 
 	@Override
 	public int relativeChessPieceValue() {
-		return 5;
+		return ROOK_VALUE;
 	}
 
 }

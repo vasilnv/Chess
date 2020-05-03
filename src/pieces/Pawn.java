@@ -3,6 +3,7 @@ package pieces;
 import pieces.AbstractPiece;
 
 public class Pawn extends AbstractPiece {
+	private static final int PAWN_VALUE = 1;
 	private static final String WHITE_COLOR = "\u2654";
 	private static final String BLACK_COLOR = "\u265A";
 	
@@ -38,7 +39,7 @@ public class Pawn extends AbstractPiece {
 
 	@Override
 	public int relativeChessPieceValue() {
-		return 1;
+		return PAWN_VALUE;
 	}
 
 }

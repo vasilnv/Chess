@@ -2,6 +2,7 @@ package pieces;
 
 
 public class Knight extends pieces.AbstractPiece {
+	private static final int KNIGHT_VALUE = 3;
 	private static final String WHITE_COLOR = "\u2654";
 	private static final String BLACK_COLOR = "\u265A";
 	
@@ -33,7 +34,7 @@ public class Knight extends pieces.AbstractPiece {
 
 	@Override
 	public int relativeChessPieceValue() {
-		return 3;
+		return KNIGHT_VALUE;
 	}
 
 }
