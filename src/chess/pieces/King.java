@@ -1,6 +1,6 @@
-package pieces;
+package chess.pieces;
 
-import pieces.AbstractPiece;
+import chess.pieces.AbstractPiece;
 
 public class King extends AbstractPiece {
 	private static final int KING_VALUE = 0;

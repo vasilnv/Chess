@@ -1,10 +1,16 @@
-package pieces;
+package chess;
 
 import java.lang.reflect.Method;
 import java.util.Random;
 import java.util.Scanner;
 
-import pieces.AbstractPiece;
+import chess.pieces.AbstractPiece;
+import chess.pieces.Bishop;
+import chess.pieces.King;
+import chess.pieces.Knight;
+import chess.pieces.Pawn;
+import chess.pieces.Queen;
+import chess.pieces.Rook;
 
 public class Chessboard {
 	private Boolean gameRunning;

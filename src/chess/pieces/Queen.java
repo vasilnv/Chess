@@ -1,6 +1,6 @@
-package pieces;
+package chess.pieces;
 
-import pieces.AbstractPiece;
+import chess.pieces.AbstractPiece;
 
 public class Queen extends AbstractPiece {
 	private static final int QUEEN_VALUE = 9;

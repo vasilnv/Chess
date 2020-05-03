@@ -1,8 +1,8 @@
-package pieces;
+package chess;
 
 import java.util.Scanner;
 
-import pieces.Chessboard;
+import chess.Chessboard;
 
 public class Controller {
 	static Scanner user_input = new Scanner(System.in);

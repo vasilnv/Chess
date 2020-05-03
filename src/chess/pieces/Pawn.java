@@ -1,6 +1,6 @@
-package pieces;
+package chess.pieces;
 
-import pieces.AbstractPiece;
+import chess.pieces.AbstractPiece;
 
 public class Pawn extends AbstractPiece {
 	private static final int PAWN_VALUE = 1;

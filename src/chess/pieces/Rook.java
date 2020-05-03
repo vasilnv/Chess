@@ -1,6 +1,6 @@
-package pieces;
+package chess.pieces;
 
-import pieces.AbstractPiece;
+import chess.pieces.AbstractPiece;
 
 public class Rook extends AbstractPiece {
 	private static final int ROOK_VALUE = 5;

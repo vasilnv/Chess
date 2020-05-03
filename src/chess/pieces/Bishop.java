@@ -1,5 +1,5 @@
-package pieces;
-import pieces.AbstractPiece;
+package chess.pieces;
+import chess.pieces.AbstractPiece;
 
 
 public class Bishop extends AbstractPiece {
