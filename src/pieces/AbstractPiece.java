@@ -14,8 +14,7 @@ public abstract class AbstractPiece {
 
 	public abstract void draw();
 
-	public abstract boolean isMoveValid(int sourceRow, int sourceColumn, int destinationRow,
-			int destinationColumn);
+	public abstract boolean isMoveValid(int sourceRow, int sourceColumn, int destinationRow, int destinationColumn);
 
 	public abstract int relativeChessPieceValue();
 

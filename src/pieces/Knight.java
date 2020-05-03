@@ -7,7 +7,7 @@ public class Knight extends pieces.AbstractPiece {
 	
 	public Knight(boolean isWhite) {
 		super(isWhite);
-			}
+	}
 
 	@Override
 	public void draw() {
@@ -23,8 +23,7 @@ public class Knight extends pieces.AbstractPiece {
 			int destinationRow, int destinationColumn) {
 		return ((Math.abs(sourceRow - destinationRow) == 2 && Math.abs(sourceColumn
 				- destinationColumn) == 1)
-				|| (Math.abs(sourceRow - destinationRow) == 1 && Math.abs(sourceColumn
-						- destinationColumn) == 2));
+				|| (Math.abs(sourceRow - destinationRow) == 1 && Math.abs(sourceColumn - destinationColumn) == 2));
 	}
 
 	@Override

@@ -11,7 +11,7 @@ public class Move {
 	private String moveCommand;
 	private Scanner user_input = new Scanner(System.in);
 	private Chessboard chessboard;
-	
+
 	public static void assignWhoStartsFirst() {
 		Random rand = new Random();
 		whitesTurnToMove = rand.nextBoolean();
@@ -49,27 +49,21 @@ public class Move {
 
 	public void showWhichPlayerTurnIs() {
 		if (whitesTurnToMove) {
-			System.out
-				.println("___________________________________________________\n"
-						+ "White's turn to move\n"
-						+ "Make move using this example:\n"
-						+ "a2 to a3\n"
-						+ "___________________________________________________\n");
+			System.out.println("___________________________________________________\n" + "White's turn to move\n"
+					+ "Make move using this example:\n" + "a2 to a3\n"
+					+ "___________________________________________________\n");
 		} else {
-			System.out
-				.println("___________________________________________________\n"
-						+ "Black's turn to move\n"
-						+ "Make move using this example:\n"
-						+ "a7 to a6\n"
-						+ "___________________________________________________\n");
+			System.out.println("___________________________________________________\n" + "Black's turn to move\n"
+					+ "Make move using this example:\n" + "a7 to a6\n"
+					+ "___________________________________________________\n");
 		}
 	}
-	
+
 	public void exitGame() {
 		chessboard.setGameRunning(false);
 		System.out.println("Thanks for playing.");
 	}
-	
+
 	public void setPieceSourceAndDestination() {
 		String[] components = moveCommand.toLowerCase().split(" ");
 		sourceRow = 7 - (components[0].charAt(1) - '1');
@@ -98,7 +92,7 @@ public class Move {
 		return true;
 	}
 
-	public boolean isMoveInBoard() throws IllegalArgumentException{
+	public boolean isMoveInBoard() throws IllegalArgumentException {
 		boolean res = true;
 		if (sourceRow < 0 || sourceRow > 7 || sourceColumn < 0 || sourceColumn > 7 || destinationRow < 0
 				|| destinationRow > 7 || destinationColumn < 0 || destinationColumn > 7) {
@@ -108,14 +102,14 @@ public class Move {
 		}
 		return res;
 	}
-	
+
 	public boolean isSourcePositionNull() {
 		if (chessboard.getPiece(sourceRow, sourceColumn) == null) {
 			throw new NullPointerException();
 		}
 		return true;
 	}
-	
+
 	public boolean isCurrentPlayerTurn() {
 		if ((chessboard.getPiece(sourceRow, sourceColumn).isWhite() && !whitesTurnToMove)
 				|| (!chessboard.getPiece(sourceRow, sourceColumn).isWhite() && whitesTurnToMove)) {
@@ -155,13 +149,8 @@ public class Move {
 	}
 
 	public void showScore() {
-		System.out
-		.println("___________________________________________________\n"
-				+ "Score: White "
-				+ whiteScore
-				+ " | "
-				+ blackScore
-				+ " Black");
+		System.out.println("___________________________________________________\n" + "Score: White " + whiteScore
+				+ " | " + blackScore + " Black");
 	}
 
 }

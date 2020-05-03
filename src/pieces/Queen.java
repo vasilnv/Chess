@@ -26,8 +26,7 @@ public class Queen extends AbstractPiece {
 		return ((Math.abs(sourceRow - destinationRow) == Math.abs(sourceColumn - destinationColumn)));
 	}
 
-	private static Boolean straightPath(int sourceRow, int sourceColumn, int destinationRow,
-			int destinationColumn) {
+	private static Boolean straightPath(int sourceRow, int sourceColumn, int destinationRow, int destinationColumn) {
 		return !((sourceRow != destinationRow) && (sourceColumn != destinationColumn));
 	}
 

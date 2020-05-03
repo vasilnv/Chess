@@ -16,7 +16,7 @@ public class Chessboard {
 		initialiseBoard(chessboard);
 		gameRunning = true;
 	}
-	
+
 	private static void initialiseBoard(AbstractPiece[][] chessboard) {
 		boolean isCurrentPieceWhite = false;
 		for (int row = 0; row < chessboard.length; row++) {
@@ -87,7 +87,7 @@ public class Chessboard {
 			}
 		}
 	}
-	
+
 	public void printBoard() {
 		System.out.println("\ta\tb\tc\td\te\tf\tg\th");
 		for (int row = 0; row < chessboard.length; row++) {
@@ -108,17 +108,17 @@ public class Chessboard {
 	public void setPiece(int sourceRow, int sourceColumn, AbstractPiece piece) {
 		this.chessboard[sourceRow][sourceColumn] = piece;
 	}
+
 	public AbstractPiece getPiece(int sourceRow, int sourceColumn) {
 		return this.chessboard[sourceRow][sourceColumn];
 	}
-	
+
 	public boolean isGameRunning() {
 		return gameRunning;
 	}
+
 	public void setGameRunning(boolean gameRunning) {
 		this.gameRunning = gameRunning;
 	}
-	
+
 }
-
-

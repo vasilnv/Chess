@@ -22,18 +22,18 @@ public class Pawn extends AbstractPiece {
 
 	@Override
 	public boolean isMoveValid(int sourceRow, int sourceColumn, int destinationRow, int destinationColumn) {
-			if (this.isWhite()) {
-				return (((sourceColumn == destinationColumn) && sourceRow == (destinationRow + 1))
-						|| ((sourceRow == 6) && (sourceColumn == destinationColumn) && (sourceRow == (destinationRow + 2)))
-						|| ((sourceRow == (destinationRow + 1))
-								&& (Math.abs(sourceColumn - destinationColumn) == 1)));
-			}
-			else {
-				return (((sourceColumn == destinationColumn) && sourceRow == (destinationRow - 1))
-						|| ((sourceRow == 1) && (sourceColumn == destinationColumn) && (sourceRow == (destinationRow - 2)))
-						|| ((sourceRow == (destinationRow - 1))
-								&& (Math.abs(sourceColumn - destinationColumn) == 1)));
-			}
+		if (this.isWhite()) {
+			return (((sourceColumn == destinationColumn) && sourceRow == (destinationRow + 1))
+					|| ((sourceRow == 6) && (sourceColumn == destinationColumn) && (sourceRow == (destinationRow + 2)))
+					|| ((sourceRow == (destinationRow + 1))
+							&& (Math.abs(sourceColumn - destinationColumn) == 1)));
+		}
+		else {
+			return (((sourceColumn == destinationColumn) && sourceRow == (destinationRow - 1))
+					|| ((sourceRow == 1) && (sourceColumn == destinationColumn) && (sourceRow == (destinationRow - 2)))
+					|| ((sourceRow == (destinationRow - 1))
+						&& (Math.abs(sourceColumn - destinationColumn) == 1)));
+		}	
 	}
 
 	@Override

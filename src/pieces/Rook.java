@@ -2,27 +2,24 @@ package pieces;
 
 import pieces.AbstractPiece;
 
-
 public class Rook extends AbstractPiece {
-	private static final String WHITE_COLOR="\u2654";
-	private static final String BLACK_COLOR="\u265A";
-	
+	private static final String WHITE_COLOR = "\u2654";
+	private static final String BLACK_COLOR = "\u265A";
+
 	public Rook(boolean isWhite) {
 		super(isWhite);
 	}
 
 	@Override
 	public void draw() {
-		if (isWhite()){
+		if (isWhite()) {
 			System.out.print(WHITE_COLOR);
-		}
-		else{
+		} else {
 			System.out.print(BLACK_COLOR);
-		}		
+		}
 	}
-	
-	private static Boolean straightPath(int sourceRow, int sourceColumn,
-			int destinationRow, int destinationColumn) {
+
+	private static Boolean straightPath(int sourceRow, int sourceColumn, int destinationRow, int destinationColumn) {
 		return !((sourceRow != destinationRow) && (sourceColumn != destinationColumn));
 	}
 

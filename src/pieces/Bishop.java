@@ -19,8 +19,7 @@ public class Bishop extends AbstractPiece {
 		}
 	}
 
-	private static Boolean diagonalPath(int sourceRow, int sourceColumn, int destinationRow,
-			int destinationColumn) {
+	private static Boolean diagonalPath(int sourceRow, int sourceColumn, int destinationRow, int destinationColumn) {
 		return ((Math.abs(sourceRow - destinationRow) == Math.abs(sourceColumn - destinationColumn)));
 	}
 
